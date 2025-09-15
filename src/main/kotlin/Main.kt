@@ -1,4 +1,9 @@
 fun main() {
+    data()
+    arithmetic()
+}
+
+fun data(){
     val text: String = "Hello World"   // 문자열
     println(text)
 
@@ -38,4 +43,29 @@ fun main() {
     val mutableNames: MutableList<String> = mutableListOf("Kim", "Lee") // 가변 리스트
     mutableNames.add("Choi")
     println(mutableNames)
+}
+
+fun arithmetic() {
+    var x = 10  // 변하는 값
+    val y = 9   // 변하지 않는 값
+
+    println(x / y)
+    println(x + y)
+    println(x % y)
+    println(x - y)
+
+    println(x++)
+    println(x--)
+
+    x = x + 5
+    println(x)
+
+    println(x.toDouble() / y)
+}
+
+
+fun comparison(){
+    var x = 11
+    var y = 9
+    println(x == y)
 }
