@@ -77,6 +77,7 @@ fun comparison() {
     println(areNumbersTheSame) // true (Int는 캐싱됨, 객체라면 false일 수 있음)
 
     var z = 13
+    // 안에 수식이 들어가야 하므로 {} 필요
     println("is z an even number? ${z % 2 == 0}") // false
 }
 
@@ -90,4 +91,35 @@ fun classExample() {
     println(a == b)   // true : 값(내용)이 같으니까
     println(a === b)  // false: 서로 다른 객체(다른 메모리)
     println(a === c)  // true : 같은 인스턴스
+}
+
+fun logical() {
+    val x = 10
+    val y = 9
+
+    println(x > 5 && y < 10) // true
+    println(x > 5 || y > 10) // true
+    println(!(x > 5))        // false
+
+    val x = 12
+    val y = 12
+    val areBothEven = (x % 2 == 0) && (y % 2 == 0)
+    // 변수명이라 그냥 앞에 $ 붙여서 출력 가능
+    println("is x an even number? $areBothEven") // true
+}
+
+fun inputToOutput() {
+    print("Enter your name: ")
+    val name = readLine() ?: "Unknown" // null일 경우 대비
+    println("Hello, $name!")
+
+    println("Enter a number:")
+    val input = readLine()
+    val number = input?.toIntOrNull() // 문자열을 숫자(Int)로 바꾸는데, 만약 변환이 불가능하면 null을 반환
+
+    if (number != null) {
+        println("You entered: $number")
+    } else {
+        println("Invalid input")
+    }
 }
