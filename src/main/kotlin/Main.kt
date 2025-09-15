@@ -1,6 +1,8 @@
 fun main() {
     data()
     arithmetic()
+    comparison()
+    classExample()
 }
 
 fun data(){
@@ -64,8 +66,28 @@ fun arithmetic() {
 }
 
 
-fun comparison(){
+fun comparison() {
     var x = 11
     var y = 9
-    println(x == y)
+    println(x == y) // false
+
+    var a = 12
+    var b = 12
+    val areNumbersTheSame = a === b
+    println(areNumbersTheSame) // true (Int는 캐싱됨, 객체라면 false일 수 있음)
+
+    var z = 13
+    println("is z an even number? ${z % 2 == 0}") // false
+}
+
+data class MyClass(val value: Int)
+
+fun classExample() {
+    val a = MyClass(10)
+    val b = MyClass(10)
+    val c = a
+
+    println(a == b)   // true : 값(내용)이 같으니까
+    println(a === b)  // false: 서로 다른 객체(다른 메모리)
+    println(a === c)  // true : 같은 인스턴스
 }
