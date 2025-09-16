@@ -123,3 +123,31 @@ fun inputToOutput() {
         println("Invalid input")
     }
 }
+
+fun nullability() {
+   
+    println("Enter a number:")
+    val input = readln()
+    val number = input?.toIntOrNull() // 문자열을 숫자(Int)로 바꾸는데, 만약 변환이 불가능하면 null을 반환
+ㄴ
+
+    // val isEven = number?.let { it % 2 == 0 } ?: false
+    val isEven = number!! % 2 == 0 // !!는 null이 아님을 보장, null이면 예외 발생, 실제로 null일 경우 프로그램이 강제로 종료
+    println("Is the number even? $isEven")
+    println("You entered: $number")
+
+    val input2 = readln()
+    val number2 = input2?.toIntOrNull()?.inc()  // 입력값을 Int로 변환, 변환 성공하면 1 증가, 실패하면 null
+    //사용자가 1을 입력하면 toIntOrNull()로 1로 변환되고, inc()로 1이 더해져서 2가 출력 됨
+    println("You entered: $number2")
+  
+    val input3 = readln()
+    val number3 = input3?.toIntOrNull()?.rem(2)?.equals(0)
+    // 변환 성공하면 2로 나눈 나머지를 구함
+    // 그 나머지가 0이면 true(짝수), 아니면 false(홀수)
+    // 만약 숫자로 변환이 안 되면 null
+    // rem은 %와 같은 역할을 함
+
+    println("You entered: $number3")
+
+}
