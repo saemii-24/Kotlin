@@ -151,3 +151,60 @@ fun nullability() {
     println("You entered: $number3")
 
 }
+
+fun condition(): String? {
+    println("Enter a number:")
+    val input = readln()
+    val inputAsInt = input.toIntOrNull()
+
+    if (inputAsInt == null) {
+        println("Invalid input")
+        return null 
+    }
+
+    // 짝수/홀수 판별
+    if (inputAsInt % 2 == 0) {
+        println("The number is even")
+    } else {
+        println("The number is odd")
+    }
+
+    println("Enter another number:")
+    val input2 = readln()
+    val inputAsInt2 = input2.toIntOrNull()
+
+    if (inputAsInt2 == null) {
+        println("Invalid input")
+        return null 
+    }
+
+    val result = if (inputAsInt2 % 2 == 0) "even" else "odd"
+    println("The number is $result")
+
+    return result
+}
+
+
+fun whenExpression() {
+    println("Enter a number:")
+    val input = readln()
+    val inputAsInt = input?.toIntOrNull()
+
+    val result = when {
+        inputAsInt == null -> "Invalid input"
+        inputAsInt % 2 == 0 -> "even"
+        else -> "odd"
+    }
+    println("The number is $result")
+
+    println("Enter your nation in English: ")
+    val nation = readln()
+    val greeting = when (nation.lowercase()) {
+        "korea" -> "안녕하세요"
+        "us", "uk" -> "Hello"
+        "france" -> "Bonjour"
+        "spain" -> "Hola"
+        else -> "Hello"
+    }
+    println(greeting)
+}
