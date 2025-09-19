@@ -208,3 +208,20 @@ fun whenExpression() {
     }
     println(greeting)
 }
+
+fun exception() {
+    try {
+        println("Enter a number:")
+        val input = readln()
+        val number = input.toIntOrNull() 
+            ?: throw IllegalArgumentException("Invalid number format") //잘못된 인수가 전달되었을 때의 예외
+        
+        println("You entered: $number")
+    } catch (e: IllegalArgumentException) {
+        println("Error: ${e.message}")
+    } catch (e: Exception) {
+        println("Unexpected error occurred")
+    } finally {
+        println("End of input")
+    }
+}
