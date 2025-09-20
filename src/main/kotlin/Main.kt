@@ -1,8 +1,9 @@
 fun main() {
-    data()
-    arithmetic()
-    comparison()
-    classExample()
+//    data()
+//    arithmetic()
+//    comparison()
+//    classExample()
+    arrayPractice()
 }
 
 fun data(){
@@ -94,19 +95,19 @@ fun classExample() {
 }
 
 fun logical() {
-    val x = 10
-    val y = 9
+    val x1 = 10
+    val y1 = 9
 
-    println(x > 5 && y < 10) // true
-    println(x > 5 || y > 10) // true
-    println(!(x > 5))        // false
+    println(x1 > 5 && y1 < 10)
+    println(x1 > 5 || y1 > 10)
+    println(!(x1 > 5))
 
-    val x = 12
-    val y = 12
-    val areBothEven = (x % 2 == 0) && (y % 2 == 0)
-    // 변수명이라 그냥 앞에 $ 붙여서 출력 가능
-    println("is x an even number? $areBothEven") // true
+    val x2 = 12
+    val y2 = 12
+    val areBothEven = (x2 % 2 == 0) && (y2 % 2 == 0)
+    println("are both even? $areBothEven")
 }
+
 
 fun inputToOutput() {
     print("Enter your name: ")
@@ -125,32 +126,23 @@ fun inputToOutput() {
 }
 
 fun nullability() {
-   
     println("Enter a number:")
     val input = readln()
-    val number = input?.toIntOrNull() // 문자열을 숫자(Int)로 바꾸는데, 만약 변환이 불가능하면 null을 반환
-ㄴ
+    val number = input.toIntOrNull()
 
-    // val isEven = number?.let { it % 2 == 0 } ?: false
-    val isEven = number!! % 2 == 0 // !!는 null이 아님을 보장, null이면 예외 발생, 실제로 null일 경우 프로그램이 강제로 종료
+    val isEven = number?.let { it % 2 == 0 } ?: false
     println("Is the number even? $isEven")
     println("You entered: $number")
 
     val input2 = readln()
-    val number2 = input2?.toIntOrNull()?.inc()  // 입력값을 Int로 변환, 변환 성공하면 1 증가, 실패하면 null
-    //사용자가 1을 입력하면 toIntOrNull()로 1로 변환되고, inc()로 1이 더해져서 2가 출력 됨
+    val number2 = input2.toIntOrNull()?.inc()
     println("You entered: $number2")
-  
+
     val input3 = readln()
-    val number3 = input3?.toIntOrNull()?.rem(2)?.equals(0)
-    // 변환 성공하면 2로 나눈 나머지를 구함
-    // 그 나머지가 0이면 true(짝수), 아니면 false(홀수)
-    // 만약 숫자로 변환이 안 되면 null
-    // rem은 %와 같은 역할을 함
-
+    val number3 = input3.toIntOrNull()?.rem(2)?.equals(0)
     println("You entered: $number3")
-
 }
+
 
 fun condition(): String? {
     println("Enter a number:")
@@ -188,7 +180,7 @@ fun condition(): String? {
 fun whenExpression() {
     println("Enter a number:")
     val input = readln()
-    val inputAsInt = input?.toIntOrNull()
+    val inputAsInt = input.toIntOrNull()
 
     val result = when {
         inputAsInt == null -> "Invalid input"
@@ -224,4 +216,44 @@ fun exception() {
     } finally {
         println("End of input")
     }
+}
+
+fun arrayPractice(){
+    //코틀린 배열은 크기 고정.
+    // push/pop 같은 동적 추가 삭제 지원 안함
+    println("Enter an index (0 ~ 3):")
+    val input = readln()
+    val inputAsInteger = input.toIntOrNull() //문자열을 숫자로 변환하고, 실패하면 null로 처리
+    val favoriteNumbers = intArrayOf(1, 2, 3, 69)
+
+    if (inputAsInteger != null && inputAsInteger in favoriteNumbers.indices) {
+        // null이 아니고 배열 범위 안에 있으면 출력
+        println("Your number is ${favoriteNumbers[inputAsInteger]}")
+    } else {
+        println("Invalid input or out of range")
+    }
+}
+
+fun mutableListPractice() {
+    // 배열과 비슷하지만 동적으로 값 추가/삭제 가능
+    val list = mutableListOf(1, 2, 3)
+
+    // 끝에 추가
+    list.add(4)
+    println(list)      // [1, 2, 3, 4]
+
+    // 끝에서 하나 떼어내기
+    val last = list.removeLast()
+    println(last)      // 4
+    println(list)      // [1, 2, 3]
+
+    // 원하는 인덱스 값 꺼내기
+    println(list[1])   // 2
+
+    // 원하는 인덱스 값 제거하기
+    list.removeAt(0)
+    println(list)      // [2, 3]
+
+    // 리스트 크기 확인
+    println(list.size) // 2
 }
