@@ -208,3 +208,33 @@ fun whenExpression() {
     }
     println(greeting)
 }
+
+fun userString(){
+    //1. 사용자로부터 문자열을 입력받아 그대로 출력
+    println("Enter a string: ");
+    val input = readln()
+    //2. 입력받은 문자열을 거꾸로 뒤집어서 출력
+    val reversedInput = reverse(input)
+    println("You entered: $input now reversed: $reversedInput")
+}
+
+fun reverse(input: String): String {
+   val reversedInput = buildString { //buildString { } 안에서 append()를 하면 하나의 문자열로 합쳐짐
+      append(input[i])
+    }
+    return reversedInput
+}
+
+// 확장 함수
+// String 클래스에 reversed()라는 새로운 메서드를 추가
+// "hello".reversed() 처럼 문자열에서 바로 호출 가능
+// 확장 함수에서는 이미 대상 객체(this) 가 넘어와 있기 때문에 매개변수를 받을 필요가 없ㅇㅁ
+fun String.reversed(): String {
+    val finalString = buildString {
+        for (i in lastIndex downTo 0) {
+            //확장 함수 안에서 this는 현재 String 객체 자기 자신
+            append(this@reversed[i])
+        }
+    }
+    return finalString
+}
