@@ -257,3 +257,49 @@ fun mutableListPractice() {
     // 리스트 크기 확인
     println(list.size) // 2
 }
+
+fun loopPractice() {
+    // 1부터 5까지 범위 순회
+    for (n in 1..5) {
+        println("for-in range: $n")
+    }
+    println("-----")
+
+    // 리스트 순회
+    // list는 불변의 데이터다.
+    val names = listOf("피카츄", "라이츄", "파이리")
+    for (name in names) {
+        println("List element: $name")
+    }
+    println("-----")
+
+    // 배열 순회
+    // array는 데이터 값은 바뀔 수 있지만 크기가 고정이다.
+    val numbers = arrayOf(10, 20, 30)
+
+    // 인덱스로 접근
+    for (i in numbers.indices) {
+        println("Index $i has value ${numbers[i]}")
+    }
+
+    // 인덱스와 값을 동시에
+    for ((i, value) in numbers.withIndex()) {
+        println("withIndex → $i: $value")
+    }
+    println("-----")
+
+    // while
+    var x = 0
+    while (x < 5) {
+        println("while loop: $x")
+        x++
+    }
+    println("-----")
+
+    // do-while 최소 1번은 실행한다.
+    var y = 0
+    do {
+        println("do-while loop: $y")
+        y++
+    } while (y < 3)
+}
