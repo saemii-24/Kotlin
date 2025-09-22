@@ -372,3 +372,23 @@ fun callGreet2() {
     greet2("Bob", 25)
     greet2()
 }
+
+//람다 함수
+//{ 매개변수들 -> 함수 본문 }
+
+fun lambdaExample() {
+    val add: (Int, Int) -> Int = { a, b -> a + b }
+    val result = add(3, 5)
+    println("Result of addition: $result") 
+
+    val square: (Int) -> Int = { x -> x * x }
+    println("Square of 4: ${square(4)}")
+
+    // Unit은 반환값이 없음을 나타냄
+    val greet3: (String) -> Unit = { name -> println("Hello, $name!") }
+    greet3("Kotlin") 
+
+    // 매개변수가 하나일 때는 it 키워드 사용 가능
+    // it은 람다식의 단일 매개변수를 가리킴
+    val greet4: (String) -> Unit = { println("Hello, $it!") }
+}
