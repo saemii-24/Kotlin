@@ -334,3 +334,41 @@ fun exception() {
         println("End of input")
     }
 }
+
+// 오버로딩된 함수
+// 함수 오버로딩이란 동일한 이름의 함수를 여러 개 정의하는 것
+// 매개변수의 타입이나 개수가 다르면 같은 이름을 사용할 수 있음
+fun greet(name: String) {
+    println("Hello, $name!")
+}
+
+fun greet(name: String, age: Int) {
+    println("Hello, $name! You are $age years old.")
+}
+
+fun greet() {
+    println("Hello, stranger!")
+}
+
+// 알아서 각자 적절함 매개변수가 있는 함수 호출함
+fun callGreet() {
+    greet("Alice")            
+    greet("Bob", 25)          
+    greet()                  
+}
+
+// 기본 매개변수와 null 허용 매개변수
+// 함수 오버로딩 하지 않고 아래와 같이 하나의 함수로 처리 가능
+fun greet2(name: String = "stranger", age: Int? = null) {
+    if (age != null) {
+        println("Hello, $name! You are $age years old.")
+    } else {
+        println("Hello, $name!")
+    }
+}
+
+fun callGreet2() {
+    greet2("Alice")
+    greet2("Bob", 25)
+    greet2()
+}
