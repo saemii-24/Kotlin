@@ -392,3 +392,48 @@ fun lambdaExample() {
     // it은 람다식의 단일 매개변수를 가리킴
     val greet4: (String) -> Unit = { println("Hello, $it!") }
 }
+
+
+//클래스
+//일반 클래스
+//행위 중심
+class NormalPerson(val name: String, val age: Int) {
+
+    // equals(), hashCode(), toString(), copy() 같은 기능이 없음
+    fun introduce() {
+        println("안녕하세요, 제 이름은 $name이고, 나이는 $age살 입니다.")
+    }
+}
+
+fun testNormalClass() {
+    val n1 = NormalPerson("Tom", 20)
+    val n2 = NormalPerson("Tom", 20)
+
+    println("=== Normal Class ===")
+    println(n1 == n2)          // false (내용 같아도 참조 다르면 false)
+    println(n1.toString())     // NormalPerson@5a07e868 (주소값 출력)
+    n1.introduce()
+}
+
+// 데이터 클래스
+// 데이터 중심
+// API 요청/응답 모델, 단순 상태(State)등 데이터가 중요시 될 때 사용함
+// val / var은 그냥 개별 변수, data class는 관련된 데이터들을 하나의 "타입"으로 묶는 도구
+data class DataPerson(val name: String, val age: Int)
+
+fun testDataClass() {
+    val d1 = DataPerson("Tom", 20)
+    val d2 = DataPerson("Tom", 20)
+    val d3 = d1.copy(age = 30) // copy 기능
+
+    println("\n=== Data Class ===")
+    println(d1 == d2)          // true (값 비교)
+    println(d1.toString())     // DataPerson(name=Tom, age=20)
+    println(d3)                // DataPerson(name=Tom, age=30)
+
+
+
+    // 구조 분해
+    val (name, age) = d1
+    println("$name is $age years old")
+}
