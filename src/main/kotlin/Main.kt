@@ -432,8 +432,26 @@ fun testDataClass() {
     println(d3)                // DataPerson(name=Tom, age=30)
 
 
-
     // 구조 분해
     val (name, age) = d1
     println("$name is $age years old")
+}
+
+//규약을 지정한다.
+interface Shape {
+    val area: Double
+    val perimeter: Double
+}
+
+//하나의 인터페이스를 여러 클래스에서 구현할 수 있다.
+abstract class RectangleBase(val width: Double, val height: Double) : Shape {
+    override val area = width * height
+    // perimeter는 일부러 구현 안 함 → abstract라서 허용됨
+}
+
+data class Rectangle(val width: Double, val height: Double) : Shape {
+    //지정해놓은 규약을 실제로 작성한다.
+    // abstract가 아닌 경우 반드시 interface에 적혀있는 모든걸 지정할 수 있다.
+    override val area = width * height
+    override val perimeter = 2 * (width + height)
 }
