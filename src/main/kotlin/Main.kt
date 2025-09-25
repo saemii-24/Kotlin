@@ -455,3 +455,32 @@ data class Rectangle(val width: Double, val height: Double) : Shape {
     override val area = width * height
     override val perimeter = 2 * (width + height)
 }
+
+
+//추상 클래스
+//공통된 속성이나 함수만 구현하고, 자식이 다르게 구현해야 하는 부분은 abstract로 선언
+//주로 상속받아서 사용하게 됨
+abstract class Animal {
+    // 1️⃣ 일반 속성/함수도 가질 수 있음
+    fun breathe() {
+    abstract val species: String
+        println("숨을 쉽니다")
+    }
+
+    // 2️⃣ 추상 함수: 반드시 자식이 구현해야 함
+    abstract fun makeSound()
+}
+
+class Dog : Animal() {
+    override val species = "강아지"
+    override fun makeSound() {
+        println("멍멍!")
+    }
+}
+
+class Cat : Animal() {
+    override val species = "고양이"
+    override fun makeSound() {
+        println("야옹~")
+    }
+}
