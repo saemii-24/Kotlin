@@ -484,3 +484,25 @@ class Cat : Animal() {
         println("야옹~")
     }
 }
+
+
+// Result = 상위 타입, 직접 인스턴스화 불가
+// Success / Error / Loading = Result의 세 가지 하위 타입
+
+sealed class Result
+
+// [활용 시나리오] 서버 API endpoint는 하나 (/user)인데,
+//요청 파라미터에 따라 응답이 성공/실패/로딩 중/빈 데이터 등 달라질 수 있음. 
+
+data class Success(val data: String) : Result()
+data class Error(val message: String) : Result()
+object Loading : Result()
+
+// 파라미터 result는 타입이 Result
+// 컴파일러는 Result가 Success | Error | Loading 세 가지 경우로만 한정된 걸 알고 있음
+
+fun handle(result: Result) = when (result) {
+    is Success -> println("Data: ${result.data}")
+    is Error -> println("Error: ${result.message}")
+    Loading -> println("Loading...")
+}
