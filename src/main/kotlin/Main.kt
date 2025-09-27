@@ -506,3 +506,16 @@ fun handle(result: Result) = when (result) {
     is Error -> println("Error: ${result.message}")
     Loading -> println("Loading...")
 }
+
+
+sealed interface Payment
+
+data class Card(val number: String) : Payment
+data class Cash(val amount: Int) : Payment
+object Free : Payment
+
+fun process(payment: Payment) = when (payment) {
+    is Card -> println("Pay by card: ${payment.number}")
+    is Cash -> println("Pay cash: ${payment.amount}")
+    Free -> println("Free of charge")
+}
