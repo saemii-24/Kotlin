@@ -519,3 +519,17 @@ fun process(payment: Payment) = when (payment) {
     is Cash -> println("Pay cash: ${payment.amount}")
     Free -> println("Free of charge")
 }
+
+
+//열거형 클래스 만들기
+enum class Direction {
+    NORTH, SOUTH, EAST, WEST
+}
+fun move(dir: Direction) {
+    when (dir) {
+        Direction.NORTH -> println("Go north")
+        Direction.SOUTH -> println("Go south")
+        Direction.EAST  -> println("Go east")
+        Direction.WEST  -> println("Go west")
+    }
+}
