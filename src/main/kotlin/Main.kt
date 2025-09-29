@@ -542,7 +542,7 @@ object SchoolPresident {
     fun introduce() = println("I am $name, the school president.")
 }
 
-fun main() {
+fun callSchoolPresident() {
     SchoolPresident.introduce()   // "I am Kim, the school president."
 
     val a = SchoolPresident
@@ -550,3 +550,17 @@ fun main() {
 
     println(a === b) //a와 b는 같다. 만약 class로 선언한 경우는 다르다고 판단함
 }
+
+//Visibility modifier
+//public(기본값) > internal > protected > private
+
+class User {
+    private var password: String = "1234" // 외부 접근 차단
+
+    fun login(input: String): Boolean {
+        return input == password // 내부에서만 접근
+    }
+}
+
+val kim = User()
+// println(kim.password)// 접근 권한 문제 발생
