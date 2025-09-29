@@ -533,3 +533,20 @@ fun move(dir: Direction) {
         Direction.WEST  -> println("Go west")
     }
 }
+
+//프로그램 내에서 오로지 하나만 존재하는 객체
+//싱글톤 = object
+
+object SchoolPresident {
+    val name = "Kim"
+    fun introduce() = println("I am $name, the school president.")
+}
+
+fun main() {
+    SchoolPresident.introduce()   // "I am Kim, the school president."
+
+    val a = SchoolPresident
+    val b = SchoolPresident
+
+    println(a === b) //a와 b는 같다. 만약 class로 선언한 경우는 다르다고 판단함
+}
