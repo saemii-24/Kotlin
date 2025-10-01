@@ -542,11 +542,45 @@ object SchoolPresident {
     fun introduce() = println("I am $name, the school president.")
 }
 
-fun main() {
+fun callSchoolPresident() {
     SchoolPresident.introduce()   // "I am Kim, the school president."
 
     val a = SchoolPresident
     val b = SchoolPresident
 
     println(a === b) //a와 b는 같다. 만약 class로 선언한 경우는 다르다고 판단함
+}
+
+fun <T> printItem(item: T) { // T는 타입 매개변수
+    println(item) // item은 T 타입 
+    //호출할 때 T가 무엇인지 결정됨
+}
+
+fun callBasicGeneric() {
+    printItem(123)        // Int
+    printItem("Hello")    // String
+    printItem(3.14)       // Double
+}
+
+// A, B는 타입 매개변수
+class PairBox<A, B>(val first: A, val second: B) 
+
+fun callPairBox() {
+    // A는 String, B는 Int로 지정
+    val pair = PairBox("Age", 25)
+    println("${pair.first} = ${pair.second}")  // Age = 25
+
+    val pair2 = PairBox(3.14, true) // A는 Double, B는 Boolean
+    println("${pair2.first} = ${pair2.second}") // 3.14 = true
+}
+
+// Number 타입과 그 하위 타입(Int, Double 등)만 허용
+fun <T : Number> add(a: T, b: T): Double {
+    return a.toDouble() + b.toDouble()
+}
+
+fun callAdd() {
+    println(add(3, 5))        // Int  8.0
+    println(add(2.5, 4.5))    // Double  7.0
+    // add("hi", "bye")  Number가 아니므로 에러
 }
