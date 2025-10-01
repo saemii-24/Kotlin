@@ -584,3 +584,16 @@ fun callAdd() {
     println(add(2.5, 4.5))    // Double  7.0
     // add("hi", "bye")  Number가 아니므로 에러
 }
+//Visibility modifier
+//public(기본값) > internal > protected > private
+
+class User {
+    private var password: String = "1234" // 외부 접근 차단
+
+    fun login(input: String): Boolean {
+        return input == password // 내부에서만 접근
+    }
+}
+
+val kim = User()
+// println(kim.password)// 접근 권한 문제 발생
